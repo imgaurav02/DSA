@@ -39,7 +39,10 @@ DEqueue(int size){
 void Enqueue(Node *x);
 Node* Delqueue();
 int isEmpty();
+void EmptyQueue();
 };
+
+
 
 int DEqueue::isEmpty(){
     return front==rear;
@@ -66,4 +69,5 @@ Node* DEqueue::Delqueue(){
         return x;
     }
 }
+
 

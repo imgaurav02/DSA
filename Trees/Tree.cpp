@@ -41,7 +41,6 @@ void Treecreate(){
         }
 
     }
-    
 }
 
 
@@ -123,12 +122,86 @@ void IPostorder(Node *t){
     
 }
 
+//implimenting the level order traversal using queue
+
+void Levelorder(Node *t){
+    DEqueue q(50);
+
+    q.Enqueue(t);
+    while (!q.isEmpty())
+    {
+        t = q.Delqueue();
+        cout<<t->data<<" ";
+        if(t->lchild)
+            q.Enqueue(t->lchild);
+        if(t->rchild)
+            q.Enqueue(t->rchild);
+    }
+    
+}
+
+// counting the nodes
+
+int count(Node *p){
+    int x,y;
+    if(p){
+        y = count(p->lchild);
+        x = count(p->rchild);
+        return x+y+1;
+
+        /*
+        this condition counts only that node with have both child
+
+        if(p->lchild && p->rchild)
+            return x+y+1;
+        else 
+            return x+y;
+        
+        
+        this condition counts only that node with have right child similarly we can write for left also
+
+        if(p->rchild)
+            return x+y+1;
+        else 
+            return x+y;
+
+
+        this condition counts only leaf nodes
+
+        if(!p->lchild && !p->rchild)
+            return x+y+1;
+        else 
+            return x+y;
+        */
+    }
+    return 0;
+}
+
+
+// this will return the levels of any tree we can print -1 value to get height
+
+int height(Node *p){
+    int x,y;
+    if(p){
+        x = height(p->lchild);
+        y = height(p->rchild);
+
+        if(x>y)
+            return x+1;
+        else
+            return y+1;
+    }
+    return 0;
+}
 
 int main(){
     Treecreate();
-    preorder(root);
+    // preorder(root);
+    cout<<height(root);
+    // cout<<count(root);
     cout<<endl;
-    IPostorder(root);
+    Levelorder(root);
+    // IPostorder(root);
     // postorder(root);
     // cout<<endl;
     // inorder(root);
