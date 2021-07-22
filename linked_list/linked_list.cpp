@@ -393,8 +393,8 @@ int isLoop(Node *p){
 // while final implimentation always maintain the last ptr 
 int main(int argc, char const *argv[])
 {
-    int a[5]={10,20,50,60,300};
-    create(a,5);
+    // int a[5]={10,20,50,60,300};
+    // create(a,5);
     // int b[5]={5,15,25,35,45};
     // create2(b,5);
 
@@ -411,12 +411,43 @@ int main(int argc, char const *argv[])
   
     // Node *t = first->next->next->next->next;
     // t->next = first->next->next;
-    cout<<endl;
-    if(isLoop(first)){
-        cout<<"Loop Linked List";
-    }
-    else{
-        cout<<"Not Looped";
+    // cout<<endl;
+    // if(isLoop(first)){
+    //     cout<<"Loop Linked List";
+    // }
+    // else{
+    //     cout<<"Not Looped";
+    // }
+    int n,choice,index,i=1;
+    while(i){
+        cout<<endl<<"Enter 1 for insert: "<<endl;
+        cout<<"Enter 2 for Delete: "<<endl;
+        cout<<"Enter 3 for display: "<<endl;
+        cout<<"Enter 4 for exit: "<<endl;
+        cin>>choice;
+        switch (choice)
+        {
+        case 1:
+            cout<<"Enter the data you want insert: ";
+            cin>>n;
+            cout<<"Enter the index in which you want to insert: ";
+            cin>>index;
+            insert(first,index,n);
+            break;
+        case 2:
+            cout<<"Enter the index from which you want to delete: ";
+            cin>>index;
+            del(first,index);
+            break;
+        case 3:
+            display(first);
+            break;
+        case 4:
+            i=0;
+            break;
+        default:
+            break;
+        }
     }
     return 0;
 }
