@@ -17,12 +17,16 @@ int main(){
         }
         cout<<endl;
     }
+    // basically we are defininf the 4 boundries
     int min_r = 0;
     int min_c = 0;
     int max_r = m-1;
     int max_c = n-1;
+
+    // all together we will print all the elements in spiral manner 
     int total_elements = m*n;
     int count = 0;
+    
     while(count<total_elements){
 
         // left

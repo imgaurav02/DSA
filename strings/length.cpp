@@ -85,6 +85,47 @@ void duplicate(char s[]){
     
 }
 
+
+//finding duplicates using bits manipulation
+void duplicateUsingBits(char s[]){
+    /* 
+        here we are going to use the logic of bits manipulation
+        1-> masking which is and operation  to check weather bit is on or not
+        2-> merging which use OR operation  to on the bit using left shift
+    */
+    
+    int hash=0,x=0;
+    for(int i=0;s[i] != '\0';i++){
+        x = 1;
+        x = x<<(s[i]-97);
+        if((x&hash)>0){
+            cout<<s[i]<<" is diplicate "<<endl;
+        }
+        else{
+
+            hash = x | hash;
+        }
+    }
+}
+// this simple suction according to compare to upper both to find permutations and for knowledge
+// i using default argument which assign with given value if u pass otherwise it will be default
+void simple_perm(string S,string answer=""){
+		    // static vector<string> res;
+		    if(S.size()==0){
+                cout<<answer<<" ";
+		        // res.push_back(answer);
+		        // return res;
+		    }
+		    for(int i=0;i<S.size();i++){
+		        char ch = S[i];
+		        string LSS = S.substr(0,i);
+		        string RSS = S.substr(i+1);
+		        string left_string = LSS + RSS;
+		        simple_perm(left_string,answer+ch);
+		    }
+		    // sort(res.begin(),res.end());
+		    // return res;
+}
 int main(){
     char s[20];
 
@@ -97,12 +138,15 @@ int main(){
     //         s[i] = s[i]+32;
     // }
     char s1[20],s2[20];
-    gets(s1);
-    gets(s2);
-    if(isAnagram(s1,s2))
-        cout<<"Strings Are anagram";
-    else
-        cout<<"Strings are not anagram";
+    // gets(s1);
+    // gets(s2);
+    simple_perm("ABC");
+    scanf("%[^\n]s",s1);
+    duplicateUsingBits(s1);
+    // if(isAnagram(s1,s2))
+    //     cout<<"Strings Are anagram";
+    // else
+    //     cout<<"Strings are not anagram";
     // cout<<s;
     return 0;
 }

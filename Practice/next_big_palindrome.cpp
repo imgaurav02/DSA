@@ -4,7 +4,7 @@ using namespace std;
 vector<int> nextPalindrome(vector<int> v,int n){
     int mid = n/2;
     int i = mid -1;
-    int j = !n&1?mid:mid+1;
+    int j = !(n&1)?mid:mid+1;
     bool isLeftSmall=0;
     while(i>=0 && v[i]==v[j]){
 
@@ -29,8 +29,8 @@ vector<int> nextPalindrome(vector<int> v,int n){
         while (i>=0)
         {
             v[i] += carry;
-            carry = v[mid]/10;
-            v[mid] %=10;
+            carry = v[i]/10;
+            v[i] %=10;
             v[j++] = v[i--];
         }
     }
