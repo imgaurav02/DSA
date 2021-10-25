@@ -1,4 +1,6 @@
 #include<bits/stdc++.h>
+#define INPUT freopen("input.txt","r",stdin);
+#define OUTPUT freopen("output.txt","w",stdout);
 using namespace std;
 #define loop(i,a,b) for(int i=a;i<b;i++)
 string double_vowels(string s){
@@ -14,6 +16,8 @@ string double_vowels(string s){
 }
 
 int main(){
+    INPUT
+    OUTPUT
     string s;
     cin>>s;
     cout<<double_vowels(s);
