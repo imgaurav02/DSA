@@ -120,8 +120,8 @@ void simple_perm(string S,string answer=""){
 		        char ch = S[i];
 		        string LSS = S.substr(0,i);
 		        string RSS = S.substr(i+1);
-		        string left_string = LSS + RSS;
-		        simple_perm(left_string,answer+ch);
+		        string remaining_string = LSS + RSS;
+		        simple_perm(remaining_string,answer+ch);
 		    }
 		    // sort(res.begin(),res.end());
 		    // return res;

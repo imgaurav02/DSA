@@ -1,0 +1,15 @@
+comparing 5 with -1
+comparing 0 with 5
+swapping 0 with 5
+comparing -2 with 5
+swapping -2 with 5
+comparing 9 with 5
+comparing 0 with -1
+comparing -2 with 0
+swapping -2 with 0
+comparing 5 with 0
+comparing -2 with -1
+swapping -2 with -1
+comparing 0 with -1
+comparing -1 with -2
+-2 -1 0 5 9 
