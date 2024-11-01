@@ -7,7 +7,7 @@ using namespace std;
 #define mid(l,r) (l+(r-l)/2)
 #define ll long long int
 #define vi vector<int>
-// implemented BFS Traversal of gragh
+// implemented BFS Traversal of graph
 void BFS(vector<int> adj[],int start,vector<bool> &vis){
     queue<int> q;
     q.push(start);
@@ -27,9 +27,40 @@ void BFS(vector<int> adj[],int start,vector<bool> &vis){
     
 }
 
+// implementing the DFS traversal of graph
+
+void DFS(vector<int> adj[],int start,vector<bool> &vis){
+    cout << start << " ";
+    vis[start] = true;
+    for(auto &it : adj[start]){
+        if(!vis[it]){
+            DFS(adj,it,vis);
+        }
+    }
+}
 
 
 
+bool isCycleBFS(vector<int> adj[],int start,vector<bool> &vis){
+    queue<pair<int,int>> q;
+    q.push({start,-1});
+    vis[start] = true;
+    while(!q.empty()){
+        pair<int,int> p = q.front();
+        q.pop();
+        int node = p.first;
+        int parent = p.second;
+        for(auto &it : adj[node]){
+            if(vis[it] and parent != it)
+                return true;
+            else if(it != parent){
+                q.push({it,node});
+                vis[it] = true;
+            }
+        }
+    }   
+    return false;
+}
 
 int main(){
     INPUT
@@ -52,12 +83,19 @@ int main(){
         cout <<endl;
     }
 
-    //doing BFS;
+    //doing Traversal;
     vector<bool> vis(n + 1,false);
     loop(i,1,n+1){
         if(!vis[i]){
-            BFS(adj,i,vis);
+            // DFS(adj,i,vis);
+            // BFS(adj,i,vis);
+            if(isCycleBFS(adj,i,vis)){
+                cout << "Yes";
+                return 0;
+
+            }
         }
     }
+    cout << "No";
     return 0;
 }
